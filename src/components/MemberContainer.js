@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import MemberForm from './MemberForm'
 
 function MemberContainer(){
     const [members, setMembers ] = useState([
@@ -37,7 +38,11 @@ function MemberContainer(){
         }
     }
     return(
-        <h1>Trial</h1>
+        <div>
+            <h1>Members</h1>
+       
+            <MemberForm addMember = {addMember} />   
+        </div>
     )
 }
 export default MemberContainer;
