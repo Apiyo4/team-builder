@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import MemberForm from './MemberForm'
+import MemberForm from './MemberForm';
+import MemberList from './MemberList';
 
 function MemberContainer(){
     const [members, setMembers ] = useState([
@@ -36,12 +37,23 @@ function MemberContainer(){
             email: member.email,
             role: member.role
         }
+        setMembers([...members, newMember])
     }
     return(
         <div>
             <h1>Members</h1>
        
-            <MemberForm addMember = {addMember} />   
+            <MemberForm addMember = {addMember} /> 
+            <h2>List of Members</h2>  
+           { members.map((member, index)=>{
+               return(
+                   <div>
+                       
+                        <MemberList member={member} key={index}/>
+                   </div>
+               )
+            })
+            }
         </div>
     )
 }
