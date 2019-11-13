@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 function MemberForm(props){
-    console.log(props);
+    // console.log(props);
     const [member, setMember] = useState({
         name: '',
         email: '',
@@ -13,11 +13,21 @@ function MemberForm(props){
             [e.target.name]: e.target.value
         })
     }
+    const handleSubmit = (ev)=>{
+        ev.preventDefault();
+        
+        props.addMember(member);
+        setMember({
+            name: '',
+            email: '',
+            role: ''
+        })
+    }
     
     return(
         <div>
             <h2>Add a member</h2>
-            <form>
+            <form onSubmit= {handleSubmit}>
                 <label> Name:
                 <input type='text' placeholder='Enter your Name' name='name' id='name' onChange={handleChange} />
                 </label>
